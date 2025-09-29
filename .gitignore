@@ -1,0 +1,10 @@
+*.mp4
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/tests-examples/
+/tests/example.spec.js
+.DS_Store

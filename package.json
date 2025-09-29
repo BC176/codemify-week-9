@@ -1,0 +1,25 @@
+{
+  "name": "codemify-week-9",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BC176/codemify-week-9.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BC176/codemify-week-9/issues"
+  },
+  "homepage": "https://github.com/BC176/codemify-week-9#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.6.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0"
+  }
+}
