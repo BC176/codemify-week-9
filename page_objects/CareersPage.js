@@ -1,3 +1,5 @@
+import path from "path";
+
 export class CareersPage {
   constructor(page) {
     this.page = page;
@@ -19,12 +21,13 @@ export class CareersPage {
     // await this. applicationSubmitButton. click();
   }
 
-  async attachResume(filePath) {
-    const inputByLabel = this.page.getByLabel(/upload resume/i);
-    const input = (await inputByLabel.count())
-      ? inputByLabel
+  async attachResume(fileRelPath) {
+    const abs = path.resolve(fileRelPath);
+    const byLabel = this.page.getByLabel(/upload resume/i);
+    const input = (await byLabel.count())
+      ? byLabel
       : this.page.locator('input[type="file"]').first();
 
-    await input.setInputFiles(filePath);
+    await input.setInputFiles(abs);
   }
 }

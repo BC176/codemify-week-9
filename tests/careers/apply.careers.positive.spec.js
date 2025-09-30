@@ -34,9 +34,7 @@ test("navigate to the application page and apply", async ({ page }) => {
   const fakeEmail = faker.internet.email();
   const fakeSubjectLine = faker.lorem.lines(1);
   const fakeMessage = faker.lorem.paragraph();
-  const filePath = path.resolve(
-    'C:Users/couch/OneDrive/Desktop/Codemify/codemify-week-9images/bug_feature.JPG'
-  );
+  const filePath = path.resolve("images/bug_feature.jpg");
 
   await homePage.careersMenuLink.click();
 
@@ -55,6 +53,5 @@ test("navigate to the application page and apply", async ({ page }) => {
     message: fakeMessage,
   });
 
-  await careersPage.applicationUploadResume.click();
   await careersPage.attachResume(filePath);
 });
