@@ -5,6 +5,7 @@ import { CareersPage } from "../../page_objects/CareersPage";
 test.beforeEach("homepage logo is visible", async ({ page }) => {
   const homePage = new HomePage(page);
   await page.goto("/");
+  //commented code to force a commit
 
   await expect(homePage.mainLogo).toBeVisible();
 });
