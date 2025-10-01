@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 export class UserDataGenerator {
-  createApplicant() {
+  generateUserData() {
     const userName = faker.person.fullName();
     const email = faker.internet.email();
     const subjectLine = faker.lorem.sentence();

@@ -31,18 +31,18 @@ test("navigate to the application page and apply", async ({ page }) => {
   const careersPage = new CareersPage(page);
   const generator = new UserDataGenerator();
   const filePath = path.resolve("images/bug_feature.jpg");
-  const applicant = generator.createApplicant();
 
   await homePage.careersMenuLink.click();
 
   await expect(careersPage.careersListContainer.getByRole("link")).not.toHaveCount(0);
 
-  await careersPage.careersListContainer.getByRole("link").first().click();
+  await careersPage.careersListContainer.getByText("Quality Assurance").first().click();
 
   await expect(careersPage.careerApplicationTitle).toBeVisible();
 
   /* test will NOT submit per instructions, submit button code is commented out in function - See CareersPage POM */
-  await careersPage.fillOutAndSubmitApplication(applicant);
-
+  await careersPage.fillOutAndSubmitApplication(generator.generateUserData());
   await careersPage.attachResume(filePath);
+
+  /* No submission assertion due to testing only, I would assert for success modals or messages, for example. Application dependent. */
 });
