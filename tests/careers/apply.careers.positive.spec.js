@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../../page_objects/HomePage";
 import { CareersPage } from "../../page_objects/CareersPage";
-import { faker } from "@faker-js/faker";
+import { UserDataGenerator } from "../../page_objects/UserDataGenerator";
 import path from "path";
 
 test.beforeEach("homepage logo is visible", async ({ page }) => {
@@ -29,29 +29,20 @@ test("navigate to the application page", async ({ page }) => {
 test("navigate to the application page and apply", async ({ page }) => {
   const homePage = new HomePage(page);
   const careersPage = new CareersPage(page);
-  const list = careersPage.careersListContainer;
-  const fakeFullName = faker.person.fullName();
-  const fakeEmail = faker.internet.email();
-  const fakeSubjectLine = faker.lorem.lines(1);
-  const fakeMessage = faker.lorem.paragraph();
+  const generator = new UserDataGenerator();
   const filePath = path.resolve("images/bug_feature.jpg");
+  const applicant = generator.createApplicant();
 
   await homePage.careersMenuLink.click();
 
-  await expect(list).toBeVisible();
-  await expect(list.getByRole("link")).not.toHaveCount(0);
+  await expect(careersPage.careersListContainer.getByRole("link")).not.toHaveCount(0);
 
-  await list.getByRole("link").first().click();
+  await careersPage.careersListContainer.getByRole("link").first().click();
 
   await expect(careersPage.careerApplicationTitle).toBeVisible();
 
-  // test will NOT submit, submit button code is commented out in function - See CareersPage POM
-  await careersPage.fillOutAndSubmitApplication({
-    name: fakeFullName,
-    email: fakeEmail,
-    subject: fakeSubjectLine,
-    message: fakeMessage,
-  });
+  /* test will NOT submit per instructions, submit button code is commented out in function - See CareersPage POM */
+  await careersPage.fillOutAndSubmitApplication(applicant);
 
   await careersPage.attachResume(filePath);
 });

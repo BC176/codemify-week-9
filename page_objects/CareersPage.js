@@ -9,15 +9,15 @@ export class CareersPage {
     this.applicationEmail = page.getByRole("textbox", { name: "Email", exact: true });
     this.applicationSubject = page.getByRole("textbox", { name: "Subject" });
     this.applicationMessage = page.getByRole("textbox", { name: "Message" });
-    this.applicationUploadResume = page.getByRole("button", { name: "Choose File" });
     this.applicationSubmitButton = page.getByRole("button", { name: "Submit" });
   }
 
-  async fillOutAndSubmitApplication({ name = "", email = "", subject = "", message = "" }) {
-    await this.applicationName.fill(name);
+  async fillOutAndSubmitApplication({ userName = "", email = "", subjectLine = "", message = "" }) {
+    await this.applicationName.fill(userName);
     await this.applicationEmail.fill(email);
-    await this.applicationSubject.fill(subject);
+    await this.applicationSubject.fill(subjectLine);
     await this.applicationMessage.fill(message);
+    /* This next line commented per instructions to NOT submit the application: */
     // await this. applicationSubmitButton. click();
   }
 
