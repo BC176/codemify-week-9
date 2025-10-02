@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 import { HomePage } from "../../page_objects/HomePage";
 import { CareersPage } from "../../page_objects/CareersPage";
 
+// single comment to force changes and allow merging
+
 test("navigate to the application page and submit without filling in any fields", async ({
   page,
 }) => {
