@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../../page_objects/HomePage";
 import { CareersPage } from "../../page_objects/CareersPage";
-import { UserDataGenerator } from "../../page_objects/UserDataGenerator";
+import { UserDataGenerator } from "../../helper/UserDataGenerator";
 import path from "path";
 
 test.beforeEach("homepage logo is visible", async ({ page }) => {
